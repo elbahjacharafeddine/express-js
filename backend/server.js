@@ -33,6 +33,15 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
+app.get('/users', (req,res) =>{
+  const users = [
+    { id: 1, name: 'John Doe', email: 'john@example.com' },
+    { id: 2, name: 'Jane Smith', email: 'jane@example.com' },
+    // Ajoutez d'autres utilisateurs ici
+  ];
+  res.json(users);
+})
+
 app.use(notFound);
 app.use(errorHandler);
 
