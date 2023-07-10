@@ -48,23 +48,20 @@ app.get('/insert-users', async (req, res) =>{
   await User.deleteMany();
 
   try {
-    await User.insertMany([
-      {
+    const user1 = new User({
         name: 'John Doe',
         email: 'john@example.com',
         password: 'password1',
-      },
-      {
-        name: 'Jane Smith',
-        email: 'jane@example.com',
-        password: 'password2',
-      },
-      {
-        name: 'Alice Johnson',
-        email: 'alice@example.com',
-        password: 'password3',
-      },
-    ]);
+        role:1
+      });
+    await user1.save();
+    const user2 = new User(      {
+          name: 'Jane Smith',
+          email: 'jane@example.com',
+          password: 'password2',
+        })
+    await user2.save();
+
     console.log('Les utilisateurs ont été insérés avec succès.');
     res.send(" insertion ca marche ")
   } catch (error) {
