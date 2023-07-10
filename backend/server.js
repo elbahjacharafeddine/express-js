@@ -45,28 +45,29 @@ app.get('/users', (req,res) =>{
   res.json(users);
 })
 app.get('/insert-users', async (req, res) =>{
-  await User.deleteMany();
+
 
   try {
-    const user1 = new User({
-        name: 'John Doe',
-        email: 'john@example.com',
-        password: 'password1',
-        role:1
-      });
-    await user1.save();
-    const user2 = new User(      {
-          name: 'Jane Smith',
-          email: 'jane@example.com',
-          password: 'password2',
-        })
-    await user2.save();
+      await User.deleteMany();
+    // const user1 = new User({
+    //     name: 'John Doe',
+    //     email: 'john@example.com',
+    //     password: 'password1',
+    //     role:1
+    //   });
+    // await user1.save();
+    // const user2 = new User(      {
+    //       name: 'Jane Smith',
+    //       email: 'jane@example.com',
+    //       password: 'password2',
+    //     })
+    // await user2.save();
 
-    console.log('Les utilisateurs ont été insérés avec succès.');
-    res.send(" insertion ca marche ")
+    // console.log('Les utilisateurs ont été insérés avec succès.');
+    // res.send(" insertion ca marche ")
   } catch (error) {
     console.error('Erreur lors de l\'insertion des utilisateurs :', error);
-    res.send("erreur lors de l insertion de documents");
+    res.send("erreur lors de la suppression de documents");
   }
 })
 app.use(notFound);
