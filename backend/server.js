@@ -6,6 +6,7 @@ import connectDB from './config/db.js';
 import cookieParser from 'cookie-parser';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
 import userRoutes from './routes/userRoutes.js';
+import User from './models/userModel.js';
 
 const port = process.env.PORT || 5000;
 
@@ -41,7 +42,34 @@ app.get('/users', (req,res) =>{
   ];
   res.json(users);
 })
+app.get('/insert-users', async (req, res) =>{
+  await User.deleteMany();
 
+  try {
+    await User.insertMany([
+      {
+        name: 'John Doe',
+        email: 'john@example.com',
+        password: 'password1',
+      },
+      {
+        name: 'Jane Smith',
+        email: 'jane@example.com',
+        password: 'password2',
+      },
+      {
+        name: 'Alice Johnson',
+        email: 'alice@example.com',
+        password: 'password3',
+      },
+    ]);
+    console.log('Les utilisateurs ont été insérés avec succès.');
+    res.send(" insertion ca marche ")
+  } catch (error) {
+    console.error('Erreur lors de l\'insertion des utilisateurs :', error);
+    res.send("erreur lors de l insertion de documents");
+  }
+})
 app.use(notFound);
 app.use(errorHandler);
 
