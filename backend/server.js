@@ -46,7 +46,6 @@ app.get('/users', (req,res) =>{
 })
 app.get('/insert-users', async (req, res) =>{
 
-
   try {
       await User.deleteMany();
     // const user1 = new User({
@@ -64,7 +63,7 @@ app.get('/insert-users', async (req, res) =>{
     // await user2.save();
 
     // console.log('Les utilisateurs ont été insérés avec succès.');
-    // res.send(" insertion ca marche ")
+    res.send(" la supression ca marche ")
   } catch (error) {
     console.error('Erreur lors de l\'insertion des utilisateurs :', error);
     res.send("erreur lors de la suppression de documents");
